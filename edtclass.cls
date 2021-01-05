@@ -17,6 +17,7 @@
 \RequirePackage[all]{hypcap}
 \RequirePackage[noadjust]{cite}
 \RequirePackage{ifpdf}
+\RequirePackage{hyperref}
 \ifpdf
 \typeout{^^J *** PDF mode *** } 
 \RequirePackage[pdftex]{graphicx}
@@ -41,12 +42,17 @@
   citecolor=[rgb]{0.1, 0.1, 0.1},
   urlcolor=[rgb]{0.09, 0.52, 0.63}
 }
+% fonts
+\setkomafont{section}{\normalfont\LARGE\rmfamily\bfseries}
+\setkomafont{subsection}{\normalfont\large\rmfamily\bfseries}
+\renewcommand{\familydefault}{\rmdefault}
+
 %
 %
-\newcommand{\refseccion}[1]{Sección~\ref{#1}}
-\newcommand{\reffigura}[1]{Figura~\ref{#1}}
-\newcommand{\reftabla}[1]{Tabla~\ref{#1}}
-\newcommand{\refecuacion}[1]{Ecuación~\ref{#1}}
+\newcommand{\refseccion}[2]{\hyperref[#1]{#2}}
+\newcommand{\reffigura}[2] {\hyperref[#1]{#2}}
+\newcommand{\reftabla}[2]{\hyperref[#1]{#2}}
+\newcommand{\refecuacion}[2]{\hyperref[#1]{#2}}
 %
 
 \newcommand{\titlerunning}[1]{\gdef\trun{#1}}
@@ -61,16 +67,24 @@
 
 \newcommand{\firstpagenumber}[1]{\setcounter{page}{#1}\gdef\@firstpagenumber{#1}}
 
-%Keywords
 \newcommand{\itemprimerapagina}[2]{
     \par\addvspace\medskipamount{
-      
-      \noindent\textsf{
+      \noindent\textrm{
         \bfseries #1:
       }
       \enspace\ignorespaces{#2}\par\addvspace\bigskipamount}
   % }
 }
+
+\newcommand{\itemprimerapaginacursiva}[2]{
+    \par\addvspace\medskipamount{
+      \noindent\textrm{
+        \bfseries \textit{#1:}
+      }
+      \enspace\ignorespaces\textit{#2}\par\addvspace\bigskipamount}
+  % }
+}
+
 
 % Identificacion de la revista junto al logo
 \newcommand{\identificacionrevista}[4]{
@@ -92,9 +106,7 @@
 %Configuacion de la primera pagina
 \firstpagenumber{1} % number of first page inside volume / all starting with 1
 \fancypagestyle{firstPage}{%
-  \fancyhf{}% delete all header information 
   \fancyfoot[L]{
-    \sffamily
     \footnotesize
       \textbf{
         Autor para correspondencia: \email{\@emailcorrespondencia}
@@ -114,6 +126,7 @@
 \fancyfoot[RO,RE]{\small\thepage}
 \fancyfoot[LE]{\textbf{\small\@title}}
 \fancyfoot[LO]{\textbf{\small\@autorcorto}}
+\renewcommand{\footrulewidth}{0.4pt}
 
 
 \renewcommand{\maketitle}{
@@ -122,7 +135,6 @@
   \thispagestyle{firstPage}
   \vspace*{1.4cm}
   \setlength{\parindent}{0pt}
-  \sffamily
   {\Huge\bfseries\@title\par}\vspace*{.6cm}
   {\large\bfseries\@author\par}\vspace*{.2cm}
   \bgroup
@@ -148,7 +160,7 @@
 % Definir el ambiente para agradecimientos
 \def\agradecimientos{\par\addvspace{17pt}\small\rmfamily
 \trivlist\if!Agradecimientos!\item[]\else
-\item[\hskip\labelsep\textsf{\bfseries Agradecimientos}]\fi%
+\item[\hskip\labelsep{\bfseries Agradecimientos}]\fi%
 }
 \def\endagradecimientos{\endtrivlist\addvspace{6pt}}
 \newenvironment{Agradecimientos}{\begin{agradecimientos}}{\end{agradecimientos}}
