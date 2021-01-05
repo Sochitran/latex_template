@@ -30,11 +30,13 @@
 \RequirePackage{relsize}
 \RequirePackage[pagewise]{lineno}
 \RequirePackage{booktabs} % table \toprule etc
+\RequirePackage{xcolor}
 %
 \newcommand{\hdoi}[1]{DOI: \href{http://dx.doi.org/#1}{{#1}}}% Header
 \newcommand{\doi}[1]{\gdef\@ldoi{#1}}
 %
 \graphicspath{{fig/}} % figures in directory fig
+\definecolor{azulsochitran}{rgb}{0.09, 0.52, 0.63}
 \hypersetup{
   colorlinks=true,
   filecolor=[rgb]{0.09, 0.52, 0.63},
@@ -89,7 +91,7 @@
 % Identificacion de la revista junto al logo
 \newcommand{\identificacionrevista}[4]{
   \begin{minipage}{0.6\textwidth}\raggedleft
-    \textbf{REVISTA ESTUDIOS DE TRANSPORTE\\ Vol {#1}, N° {#2}, pag {#3} ({#4})}
+    \textcolor{azulsochitran}{\textbf{REVISTA ESTUDIOS DE TRANSPORTE}}\\ \textbf{Vol {#1}, N° {#2}, pag {#3} ({#4})}
   \end{minipage}
   \hfill%
   \noindent\begin{minipage}{0.2\textwidth}
