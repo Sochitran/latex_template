@@ -8,23 +8,32 @@
 
 \titulo{Título del Artículo}
 
-
+% Autores, authorlabel debe ser correlativo y debe terminar en \and cada linea si sigue un nuevo autor
 \author{
   Autor Apellido Uno \authorlabel{1} \and 
-  Autor Apellido Dos \authorlabel{2} %\and
+  Autor Apellido Dos \authorlabel{2}
 }
+
+% Informacion del pie de pagina
 \autorcorto {
   A. AppelidoUno \and A. ApellidoDos
 }
+
+% Correo para la correspondencia
 \emailcorrespondencia{test@test.com}
 
+
+% Bloque de identificacion de la institucion
 \institute{
   \authorlabel{1} Nombre Institución primer autor
   \and
   \authorlabel{2} Nombre Institución segundo autor
 }
 
+% Fechas, recibido, ultima revision, publicacion 
 \fechas{2020}{02/12/2020}{05/12/2020}{28/12/2020}
+
+%Identificacion doi
 \doi{10.17815/CD.2019.22} % doi
 
 \maketitle
